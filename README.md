@@ -1,11 +1,20 @@
+# Straight clone of OG Dask-Docker repot on 8-26-2024
+
+built using this cmd:
+
+```bash
+docker build -t adamkabak/dask-docker:latest .
+
+```
+
 # Dask docker images
 
 [![Docker build](https://github.com/dask/dask-docker/actions/workflows/build.yml/badge.svg)](https://github.com/dask/dask-docker/actions/workflows/build.yml)
 
-| Image  | Description | Versions |
-| ------------- | ------------- | ------------- |
-| `ghcr.io/dask/dask`  | Base image to use for Dask scheduler and workers  |   [![][daskdev-dask-py310-release] ![][daskdev-dask-release] ![][daskdev-dask-latest] <br /> ![][daskdev-dask-py39-release] <br /> ![][daskdev-dask-py311-release]](https://github.com/dask/dask-docker/pkgs/container/dask)  |
-| `ghcr.io/dask/dask-notebook`  | Jupyter Notebook image to use as helper entrypoint  | [![][daskdev-dask-notebook-py310-release] ![][daskdev-dask-notebook-release] ![][daskdev-dask-notebook-latest] <br /> ![][daskdev-dask-notebook-py39-release] <br /> ![][daskdev-dask-notebook-py311-release]](https://github.com/dask/dask-docker/pkgs/container/dask-notebook) |
+| Image                        | Description                                        | Versions                                                                                                                                                                                                                                                                         |
+| ---------------------------- | -------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `ghcr.io/dask/dask`          | Base image to use for Dask scheduler and workers   | [![][daskdev-dask-py310-release] ![][daskdev-dask-release] ![][daskdev-dask-latest] <br /> ![][daskdev-dask-py39-release] <br /> ![][daskdev-dask-py311-release]](https://github.com/dask/dask-docker/pkgs/container/dask)                                                       |
+| `ghcr.io/dask/dask-notebook` | Jupyter Notebook image to use as helper entrypoint | [![][daskdev-dask-notebook-py310-release] ![][daskdev-dask-notebook-release] ![][daskdev-dask-notebook-latest] <br /> ![][daskdev-dask-notebook-py39-release] <br /> ![][daskdev-dask-notebook-py311-release]](https://github.com/dask/dask-docker/pkgs/container/dask-notebook) |
 
 [daskdev-dask-latest]: https://img.shields.io/badge/ghcr.io%2Fdask%2Fdask-latest-blue
 [daskdev-dask-release]: https://img.shields.io/badge/ghcr.io%2Fdask%2Fdask-2024.8.1-blue
@@ -15,7 +24,6 @@
 [daskdev-dask-notebook-release]: https://img.shields.io/badge/ghcr.io%2Fdask%2Fdask--notebook-2024.8.1-blue
 [daskdev-dask-notebook-py310-release]: https://img.shields.io/badge/ghcr.io%2Fdask%2Fdask--notebook-2024.8.1--py3.10-blue
 [daskdev-dask-notebook-py311-release]: https://img.shields.io/badge/ghcr.io%2Fdask%2Fdask--notebook-2024.8.1--py3.11-blue
-
 
 ## Example
 
@@ -45,21 +53,20 @@ It should output something like this:
 
 The following environment variables are supported for both the base and notebook images:
 
-* `$EXTRA_APT_PACKAGES` - Space separated list of additional system packages to install with apt.
-* `$EXTRA_CONDA_PACKAGES` - Space separated list of additional packages to install with conda.
-This variable can also be used to specify custom conda channels; for example, to install the latest Dask conda nightly packages:
+- `$EXTRA_APT_PACKAGES` - Space separated list of additional system packages to install with apt.
+- `$EXTRA_CONDA_PACKAGES` - Space separated list of additional packages to install with conda.
+  This variable can also be used to specify custom conda channels; for example, to install the latest Dask conda nightly packages:
 
 ```bash
 docker run -e EXTRA_CONDA_PACKAGES="-c dask/label/dev dask" daskdev/dask:latest
 ```
 
-* `$EXTRA_PIP_PACKAGES` - Space separated list of additional python packages to install with pip.
-* `$USE_MAMBA` - Boolean controlling whether to use conda or mamba to install `$EXTRA_CONDA_PACKAGES`.
+- `$EXTRA_PIP_PACKAGES` - Space separated list of additional python packages to install with pip.
+- `$USE_MAMBA` - Boolean controlling whether to use conda or mamba to install `$EXTRA_CONDA_PACKAGES`.
 
 The notebook image supports the following additional environment variables:
 
-* `$JUPYTERLAB_ARGS` - Extra [arguments](https://jupyter-notebook.readthedocs.io/en/stable/config.html) to pass to the `jupyter lab` command.
-
+- `$JUPYTERLAB_ARGS` - Extra [arguments](https://jupyter-notebook.readthedocs.io/en/stable/config.html) to pass to the `jupyter lab` command.
 
 ## Building images
 
